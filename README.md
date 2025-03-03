@@ -1,7 +1,9 @@
 # DjangoLession113-2
 二技一年級下學期資料庫管理系統實作，Django的實作課程
 
-# 啟動伺服器：python manage.py runserver (用瀏覽器訪問 http://127.0.0.1:8000)
+# 啟動伺服器：
+python manage.py runserver 
+(用瀏覽器訪問 http://127.0.0.1:8000)
 
 
 # 建立虛擬環境序流程 虛擬環境建立在目錄以外的地方 因為檔案很大

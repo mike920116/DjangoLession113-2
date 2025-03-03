@@ -6,7 +6,7 @@ python manage.py runserver
 (用瀏覽器訪問 http://127.0.0.1:8000)
 
 
-# 建立虛擬環境序流程 虛擬環境建立在目錄以外的地方 因為檔案很大
+# 從建立到進入虛擬環境
 1.python -V 
 
 **確認python當前版本 project-name(命名虛擬環境名稱)**

@@ -1,4 +1,50 @@
-<!-- header.html -->
+<!-- templates/header.html -->
 {% load static %}
-<h2><img src="{% static 'images/logo.png' %}" width="150">
-歡迎光臨 文學天地</h2>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- 網站 LOGO -->
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static 'images/logo1.jpg' %}" width="40" height="40" alt="Logo">
+      你好
+    </a>
+    
+    <!-- 手機版選單按鈕 -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'home' %}">首頁</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'post_list' %}">貼文</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">關於我們</a>
+        </li>
+        
+        <!-- 下拉選單 -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            更多功能
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">熱門貼文</a></li>
+            <li><a class="dropdown-item" href="#">最新消息</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">設定</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- 搜尋功能 -->
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="搜尋貼文" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">搜尋</button>
+      </form>
+    </div>
+  </div>
+</nav>

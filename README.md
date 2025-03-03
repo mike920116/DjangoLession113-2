@@ -15,9 +15,9 @@ python manage.py runserver
 
 **建立虛擬環境**
 
-3.project-name\Scripts\activate.bat
+3.project-name(2025虛擬環境)\Scripts\activate.bat(.bat可省略不打)
 
-**進入虛擬環境**
+**進入虛擬環境(project-name為剛才建立的虛擬環境名稱)**
 
 # 建立課本2-03的目錄底下所有檔案
 4.python -m pip install Django==4.2

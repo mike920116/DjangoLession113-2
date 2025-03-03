@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "mblog"
+version = "0.1.0"
+description = "我的 Django 部落格專案"
+authors = ["mike920116 <10856037@ntub.edu.tw>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

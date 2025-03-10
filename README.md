@@ -76,35 +76,20 @@ python manage.py createsuperuser
 # 課本第四章資料結構
 
 mynewsite(django-admin startproject mynewsite)
-
 |----db.sqlite3
-
 |----manage.py
-
 |----mynewsite
-
 |----|----setting.py
-
 |----|----url.py
-
 |----|----wsgi.py
-
 |----mysite(進到專案之後下python manage.py startapp mysite)
-
      |----admin.py
-
      |----apps.py
-
      |----migrations
-
      |----models.py
-
      |----test.py
-
      |----views.py
-
      |----static(自己建立的資料夾)(下指令mkdir)
-
      |----templates(自己建立的資料夾)(下指令mkdir)
 # 常見遇到cmd指令
 

@@ -83,11 +83,11 @@ mynewsite(django-admin startproject mynewsite)
 
 |----mynewsite
 
-|    |----setting.py
+|----|----setting.py
 
-|    |----url.py
+|----|----url.py
 
-|    |----wsgi.py
+|----|----wsgi.py
 
 |----mysite(進到專案之後下python manage.py startapp mysite)
 

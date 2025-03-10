@@ -7,44 +7,44 @@ python manage.py runserver
 
 
 # 從建立到進入虛擬環境
-1.python -V 
+python -V 
 
 **確認python當前版本 project-name(命名虛擬環境名稱)**
 
-2.python -m venv project-name
+python -m venv project-name
 
 **建立虛擬環境**
 
-3.project-name(2025虛擬環境)\Scripts\activate.bat(.bat可省略不打)
+project-name(2025虛擬環境)\Scripts\activate.bat(.bat可省略不打)
 
 **進入虛擬環境(project-name為剛才建立的虛擬環境名稱)**
 
 # 建立課本2-03的目錄底下所有檔案
-4.python -m pip install Django==4.2
+python -m pip install Django==4.2
 
 **在虛擬環境裡面下載Django並且版本為4.2**
 
-5.django-admin startproject mblog
+django-admin startproject mblog
 
 **使用django管理員身分建立名稱為mblog的資料夾檔案**
 
-6.cd mblog
+cd mblog
 
 **進到mblog目錄**
 
-7.python manage.py startapp mysite
+python manage.py startapp mysite
 
 **創建一個新的 Django 應用（app），名稱為 mysite。**
 
-8.python manage.py makemigrations
+python manage.py makemigrations
 
 **依照 models.py 產生 migrations 檔案**
 
-9.python manage.py migrate
+python manage.py migrate
 
 **依照 migrations 建立資料庫**
 
-10.python manage.py showmigrations
+python manage.py showmigrations
 
 **顯示目前migrations的狀態**
 
@@ -73,6 +73,39 @@ python manage.py createsuperuser
 
 **建立超級使用者**
 
+# 課本第四章資料結構
+
+mynewsite(django-admin startproject mynewsite)
+
+|----db.sqlite3
+
+|----manage.py
+
+|----mynewsite
+
+|    |----setting.py
+
+|    |----url.py
+
+|    |----wsgi.py
+
+|----mysite(進到專案之後下python manage.py startapp mysite)
+
+     |----admin.py
+
+     |----apps.py
+
+     |----migrations
+
+     |----models.py
+
+     |----test.py
+
+     |----views.py
+
+     |----static(自己建立的資料夾)(下指令mkdir)
+
+     |----templates(自己建立的資料夾)(下指令mkdir)
 # 常見遇到cmd指令
 
 rmdir /s (資料夾名稱)：刪除用不到的資料夾

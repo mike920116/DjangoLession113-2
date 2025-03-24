@@ -1,0 +1,78 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset='utf-8'>
+    <title>Home Page</title>
+</head>
+<body>
+    <h2>請輸入日期：</h2>
+    <form onsubmit="updateURL(event)">
+        <label for="yr">年：</label>
+        <input type="number" id="yr" name="yr" min="2000" max="2100" required><br>
+
+        <label for="mon">月：</label>
+        <input type="number" id="mon" name="mon" min="1" max="12" required><br>
+
+        <label for="day">日：</label>
+        <input type="number" id="day" name="day" min="1" max="31" required><br>
+
+        <button type="submit">查詢</button>
+    </form>
+
+    <script>
+        // 取得當前日期
+        function setToday() {
+            let today = new Date();
+            let yr = today.getFullYear();
+            let mon = today.getMonth() + 1; // 月份是 0 ~ 11，所以要 +1
+            let day = today.getDate();
+
+            document.getElementById("yr").value = yr;
+            document.getElementById("mon").value = mon;
+            document.getElementById("day").value = day;
+
+            updateDayRange();
+        }
+
+        // 根據年/月更新日期範圍
+        function updateDayRange() {
+            let yr = document.getElementById("yr").value;
+            let mon = document.getElementById("mon").value;
+            let dayInput = document.getElementById("day");
+
+            if (yr && mon) {
+                let daysInMonth = new Date(yr, mon, 0).getDate(); // 取得該月最大天數
+                dayInput.max = daysInMonth;
+
+                if (dayInput.value > daysInMonth) {
+                    dayInput.value = daysInMonth; // 防止超過最大天數
+                }
+            }
+        }
+
+        // 監聽年/月變化，動態更新天數範圍
+        document.getElementById("yr").addEventListener("input", updateDayRange);
+        document.getElementById("mon").addEventListener("input", updateDayRange);
+
+        // 提交時導向對應網址
+        function updateURL(event) {
+            event.preventDefault();
+
+            let yr = document.getElementById("yr").value;
+            let mon = document.getElementById("mon").value;
+            let day = document.getElementById("day").value;
+
+            if (yr && mon && day) {
+                let url = `/list/${yr}/${mon}/${day}/`;
+                window.location.href = url;
+            } else {
+                alert("請輸入完整的日期！");
+            }
+        }
+
+        // 初始化今日日期
+        setToday();
+    </script>
+</body>
+</html>

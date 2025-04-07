@@ -19,7 +19,7 @@ project-name(2025虛擬環境)\Scripts\activate.bat(.bat可省略不打)
 
 **進入虛擬環境(project-name為剛才建立的虛擬環境名稱)**
 
-# 建立課本2-03的目錄底下所有檔案
+# 建立三套組1.django版本2.專案3.python app
 python -m pip install Django==4.2
 
 **在虛擬環境裡面下載Django並且版本為4.2**

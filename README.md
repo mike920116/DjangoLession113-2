@@ -24,7 +24,8 @@ python manage.py runserver
 3.  **進入虛擬環境 (PowerShell)：**
     (將 `<your_venv_name>` 替換為您剛才建立的虛擬環境名稱)
     ```powershell
-    .\\<your_venv_name>\\Scripts\\Activate.ps1
+    .\<your_venv_name>\Scripts\activate.bat(.bat可省略不打)
+
     ```
     *如果遇到執行原則 (Execution Policy) 問題，您可能需要先以系統管理員身分開啟 PowerShell 並執行 `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` 或 `Set-ExecutionPolicy RemoteSigned -Scope Process`，然後再嘗試啟動虛擬環境。*
     *若使用 CMD，請執行 `<your_venv_name>\\Scripts\\activate.bat`*

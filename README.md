@@ -1,124 +1,195 @@
 # DjangoLession113-2
 二技一年級下學期資料庫管理系統實作，Django的實作課程
 
-# 啟動伺服器：
-python manage.py runserver 
-(用瀏覽器訪問 http://127.0.0.1:8000)
+# 啟動伺服器
 
+```powershell
+python manage.py runserver
+```
+接著用瀏覽器訪問 `http://127.0.0.1:8000`
 
 # 從建立到進入虛擬環境
-python -V 
 
-**確認python當前版本 project-name(命名虛擬環境名稱)**
+1.  **確認 Python 版本：**
+    ```powershell
+    python -V
+    ```
 
-python -m venv project-name
+2.  **建立虛擬環境：**
+    (將 `<your_venv_name>` 替換為您的虛擬環境名稱，例如 `myenv`)
+    ```powershell
+    python -m venv <your_venv_name>
+    ```
 
-**建立虛擬環境**
+3.  **進入虛擬環境 (PowerShell)：**
+    (將 `<your_venv_name>` 替換為您剛才建立的虛擬環境名稱)
+    ```powershell
+    .\\<your_venv_name>\\Scripts\\Activate.ps1
+    ```
+    *如果遇到執行原則 (Execution Policy) 問題，您可能需要先以系統管理員身分開啟 PowerShell 並執行 `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` 或 `Set-ExecutionPolicy RemoteSigned -Scope Process`，然後再嘗試啟動虛擬環境。*
+    *若使用 CMD，請執行 `<your_venv_name>\\Scripts\\activate.bat`*
 
-project-name(2025虛擬環境)\Scripts\activate.bat(.bat可省略不打)
+# 建立 Django 專案與應用程式
 
-**進入虛擬環境(project-name為剛才建立的虛擬環境名稱)**
+1.  **安裝 Django (指定版本 4.2)：**
+    (請確保您已在虛擬環境中)
+    ```powershell
+    python -m pip install Django==4.2
+    ```
 
-# 建立三套組1.django版本2.專案3.python app
-python -m pip install Django==4.2
+2.  **建立 Django 專案：**
+    (將 `<your_project_name>` 替換為您的專案名稱，例如 `myproject` 或 `mblog`)
+    ```powershell
+    django-admin startproject <your_project_name>
+    ```
 
-**在虛擬環境裡面下載Django並且版本為4.2**
+3.  **進入專案目錄：**
+    (將 `<your_project_name>` 替換為您的專案名稱)
+    ```powershell
+    cd <your_project_name>
+    ```
 
-django-admin startproject mblog
+4.  **建立 Django 應用程式 (App)：**
+    (將 `<your_app_name>` 替換為您的應用程式名稱，例如 `mysite`)
+    ```powershell
+    python manage.py startapp <your_app_name>
+    ```
 
-**使用django管理員身分建立名稱為mblog的資料夾檔案**
+5.  **產生資料庫遷移檔案：**
+    (這會根據您在 `models.py` 中的定義產生遷移檔案)
+    ```powershell
+    python manage.py makemigrations
+    ```
 
-cd mblog
+6.  **執行資料庫遷移：**
+    (這會將變更應用到資料庫)
+    ```powershell
+    python manage.py migrate
+    ```
 
-**進到mblog目錄**
+7.  **顯示遷移狀態 (可選)：**
+    ```powershell
+    python manage.py showmigrations
+    ```
 
-python manage.py startapp mysite
+# 專案建立流程概覽 (另一種操作順序參考)
 
-**創建一個新的 Django 應用（app），名稱為 mysite。**
+1.  **選擇或建立專案的根目錄：**
+    (例如，您想在 `D:\\my_django_projects` 下建立新專案)
+    ```powershell
+    # 移至您選擇的基礎目錄
+    cd <your_chosen_base_directory> # 例如: cd D:\\my_django_projects
+    ```
+    ```powershell
+    # 建立專案資料夾
+    mkdir <your_project_folder_name> # 例如: mkdir my_new_django_site
+    ```
+    ```powershell
+    # 進入專案資料夾
+    cd <your_project_folder_name> # 例如: cd my_new_django_site
+    ```
+    *注意：建議不要在虛擬環境的目錄內建立 Django 專案。*
 
-python manage.py makemigrations
+2.  **(若尚未完成) 建立並進入虛擬環境，並安裝 Django：**
+    (參考上一節「從建立到進入虛擬環境」及「安裝 Django」的指令)
+    ```powershell
+    # python -m venv <your_venv_name>
+    # .\\<your_venv_name>\\Scripts\\Activate.ps1
+    # python -m pip install Django==4.2
+    ```
 
-**依照 models.py 產生 migrations 檔案**
+3.  **建立 Django 專案：**
+    (將 `<your_project_name>` 替換為您的專案名稱。此名稱將是專案配置目錄和管理命令的基礎。)
+    ```powershell
+    django-admin startproject <your_project_name> .
+    ```
+    *注意：命令結尾的 `.` 表示在當前目錄 (`<your_project_folder_name>`) 下建立專案檔案，而不是再新增一層與 `<your_project_name>` 同名的子目錄。如果省略 `.`，則會在 `<your_project_folder_name>` 下建立一個名為 `<your_project_name>` 的子目錄，並將專案檔案放在其中。*
 
-python manage.py migrate
+4.  **建立超級使用者 (用於後台管理)：**
+    ```powershell
+    python manage.py createsuperuser
+    ```
+    (依照提示設定使用者名稱、電子郵件和密碼)
 
-**依照 migrations 建立資料庫**
+# 常見 PowerShell 指令 (用於檔案/資料夾操作)
 
-python manage.py showmigrations
+*   **刪除資料夾及其內容 (遞迴)：**
+    (將 `<folder_name>` 替換為要刪除的資料夾名稱)
+    ```powershell
+    Remove-Item -Recurse -Force <folder_name>
+    ```
+    *`rmdir /s <folder_name>` 是 CMD 中的等效指令。*
 
-**顯示目前migrations的狀態**
+*   **刪除檔案：**
+    (將 `<file_name>` 替換為要刪除的檔案名稱)
+    ```powershell
+    Remove-Item -Force <file_name>
+    ```
+    *`del <file_name>` 是 CMD 中的等效指令。*
 
-# 建立mysite資料檔案的操作順序
-python -m pip install Django==4.2
+*   **刪除資料夾內所有檔案 (不含子資料夾中的檔案)：**
+    (將 `<folder_name>` 替換為目標資料夾名稱)
+    ```powershell
+    Remove-Item -Force <folder_name>\\*
+    ```
 
-**在虛擬環境裡面下載Django並且版本為4.2**
-
-cd (dir)
-
-**你想要將網頁在哪個目錄執行，不要在虛擬環境的目錄裡面**
-
-mkdir (dir)
-
-**建立專案名稱**
-
-cd (dir)
-
-**進到專案目錄**
-
-django-admin startproject mysie
-
-**使用django管理員身分建立名稱為mysite的資料檔案**
-
-python manage.py createsuperuser
-
-**建立超級使用者**
-
-# 常見遇到cmd指令
-
-rmdir /s (資料夾名稱)：刪除用不到的資料夾
-
-del (資料夾/檔案名稱)：刪除資料夾內所有檔案或指定檔案名稱
-
-應用（App）與專案（Project）的區別
+# 應用（App）與專案（Project）的區別
 
 Django Project（專案）：整個 Django 的網站，包含設定 (settings.py)、URL 路由 (urls.py)、資料庫設定等。
 
 Django App（應用）：專案內的一個功能模組，例如「用戶管理」、「博客」、「購物車」等，App 可以被重複使用。
 
-# 課本第四章資料結構 (mynewsite底下四個資料)
+# 專案與應用程式的典型目錄結構範例
 
-mynewsite(django-admin startproject mynewsite)
+假設我們的專案名稱是 `myproject`，應用程式名稱是 `myapp`。
 
-|----db.sqlite3
+1.  **建立專案 (例如 `myproject`)：**
+    ```powershell
+    django-admin startproject myproject
+    ```
+    ```powershell
+    cd myproject
+    ```
 
-|----manage.py
+2.  **建立應用程式 (例如 `myapp`)：**
+    (在專案目錄內執行)
+    ```powershell
+    python manage.py startapp myapp
+    ```
 
-|----mynewsite
+3.  **在應用程式 `myapp` 目錄內建立 `static` 和 `templates` 資料夾：**
+    (這些資料夾通常建立在每個 app 內部，或者在專案層級集中管理)
+    ```powershell
+    cd myapp
+    mkdir static
+    mkdir templates
+    cd .. # 回到專案根目錄 (myproject)
+    ```
+    *或者，您也可以在專案根目錄 (`myproject`) 為整個專案建立共用的 `static` 和 `templates` 資料夾，這是另一種常見模式。*
 
-|----|----setting.py
-
-|----|----url.py
-
-|----|----wsgi.py
-
-|----mysite(進到專案之後下python manage.py startapp mysite)
-
-     |----admin.py
-
-     |----apps.py
-
-     |----migrations
-
-     |----models.py
-
-     |----test.py
-
-     |----views.py
-
-     |----static(自己建立的資料夾)(下指令mkdir)
-
-     |----templates(自己建立的資料夾)(下指令mkdir)
-
+**預期產生的結構 (以 `myproject` 和 `myapp` 為例)：**
+```plaintext
+myproject/
+|----manage.py             # Django 管理腳本
+|----myproject/            # Django 專案配置目錄
+|    |----settings.py
+|    |----urls.py
+|    |----wsgi.py
+|    |----asgi.py           # Django 3.0+
+|    |----__init__.py
+|----myapp/                # Django 應用程式 (App)
+|    |----migrations/
+|    |----static/           # (自行建立 for myapp)
+|    |----templates/        # (自行建立 for myapp)
+|    |----__init__.py
+|    |----admin.py
+|    |----apps.py
+|    |----models.py
+|    |----tests.py
+|    |----views.py
+|----db.sqlite3            # (執行 python manage.py migrate 後產生)
+```
+*注意：`static` 和 `templates` 的確切位置和組織方式可能因專案配置和個人偏好而異。上述是在 app 內建立的範例。*
 
 # Django 留言板與 BMI 計算專案 (dj4ch08)
 
